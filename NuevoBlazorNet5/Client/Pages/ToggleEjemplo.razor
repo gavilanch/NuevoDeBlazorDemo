@@ -1,0 +1,25 @@
+﻿@page "/toggle"
+
+<h3>Ejemplo Toggle</h3>
+
+<details id="details-toggle" @ontoggle="OnToggle">
+    <summary>Más información</summary>
+    <p>Contenido en detalle</p>
+</details>
+
+<div>
+    @if (detailsExpanded)
+    {
+        <p>Lee los detalles cuidadosamente</p>
+    }
+</div>
+
+@code {
+    bool detailsExpanded;
+
+    void OnToggle()
+    {
+        Console.WriteLine("Evento ejecutado");
+        detailsExpanded = !detailsExpanded;
+    }
+}

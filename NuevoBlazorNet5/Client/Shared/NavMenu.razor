@@ -1,0 +1,79 @@
+﻿<div class="top-row pl-4 navbar navbar-dark">
+    <a class="navbar-brand" href="">NuevoBlazorNet5</a>
+    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <ul class="nav flex-column">
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span> Home
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="counter">
+                <span class="oi oi-plus" aria-hidden="true"></span> Counter
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="fetchdata">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="aislamiento">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Aislamiento
+            </NavLink>
+        </li>
+
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="lazyloading">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Lazy Loading
+            </NavLink>
+        </li>
+
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="virtualizar">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Virtualizar
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="focus">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Focus
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="cabecera">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Cabecera
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="inputArchivo">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Input File
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="inputradio">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Input Radio
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="toggle">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Toggle
+            </NavLink>
+        </li>
+    </ul>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

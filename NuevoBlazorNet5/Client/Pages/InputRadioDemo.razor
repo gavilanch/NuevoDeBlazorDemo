@@ -1,0 +1,56 @@
+﻿@page "/inputradio"
+
+<h3>Opiniones acerca de Blazor:</h3>
+<EditForm Model="modelo" OnValidSubmit="ProcesarFormulario">
+    <InputRadioGroup @bind-Value="modelo.Respuesta">
+        @foreach (var opinion in opiniones)
+        {
+            <div class="form-check">
+                <InputRadio class="form-check-input" id="@opinion.Id" Value="@opinion.Id" />
+                <label class="form-check-label" for="@opinion.Id">@opinion.Label</label>
+            </div>
+        }
+    </InputRadioGroup>
+
+    <button type="submit">Enviar</button>
+</EditForm>
+
+@if (!string.IsNullOrEmpty(mensaje))
+{
+    <h5>@mensaje</h5>
+}
+
+@code {
+
+    private string generate(string id, string prefijo)
+    {
+        return prefijo + id;
+    }
+
+    Encuesta modelo = new Encuesta();
+    string mensaje = string.Empty;
+
+    public class Encuesta
+    {
+        public int Respuesta { get; set; }
+    }
+
+    public class Opinion
+    {
+        public int Id { get; set; }
+        public string Label { get; set; }
+    }
+
+    public List<Opinion> opiniones = new List<Opinion>();
+
+    protected override void OnInitialized()
+    {
+        opiniones = new List<Opinion>() { new Opinion() { Id = 1, Label = "Me parece espléndido" }, new Opinion() { Id = 2, Label = "Me parece genial" } };
+    }
+
+    public void ProcesarFormulario()
+    {
+        mensaje = $"Escogiste la respuesta \"{opiniones.First(x => x.Id == modelo.Respuesta).Label}\" cuyo valor es {modelo.Respuesta}";
+    }
+
+}

@@ -1,0 +1,87 @@
+﻿@page "/virtualizar"
+@using NuevoBlazorNet5.Client.Modelos
+
+<h3>Virtualizar</h3>
+
+Cantidad de Empleados:
+<input type="number" @bind="employeesQty" />
+<button type="button" @onclick="GenerateEmployeesClick">Generate Employees</button>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Title</th>
+            <th>Date of Birth</th>
+            <th>Age</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @*@foreach (var employee in Employees)
+        {
+            <tr>
+                <td>@employee.Id</td>
+                <td>@employee.Name</td>
+                <td>@employee.JobTitle</td>
+                <td><input type="date" @bind="employee.DateOfBirth" /></td>
+                <td>@(DateTime.Today.Year - employee.DateOfBirth.Year) </td>
+            </tr>
+        }*@
+
+        <Virtualize ItemsProvider="LoadEmployees" Context="employee">
+            <tr @key="employee.Id">
+                <td>@employee.Id</td>
+                <td>@employee.Name</td>
+                <td>@employee.JobTitle</td>
+                <td><input type="date" @bind="employee.DateOfBirth" /></td>
+                <td>@(DateTime.Today.Year - employee.DateOfBirth.Year) </td>
+            </tr>
+        </Virtualize>
+
+    </tbody>
+</table>
+
+@code {
+
+    public List<Empleado> Employees = new List<Empleado>();
+    private int employeesQty = 50;
+
+    protected override void OnInitialized()
+    {
+        Employees = GetEmployees(0, employeesQty);
+    }
+
+    private void GenerateEmployeesClick()
+    {
+        Employees = GetEmployees(0, employeesQty);
+    }
+
+    ValueTask<ItemsProviderResult<Empleado>> LoadEmployees(ItemsProviderRequest request)
+    {
+        Console.WriteLine("executing LoadEmployees");
+        var requestQty = Math.Min(request.Count, employeesQty - request.StartIndex);
+        var employees = GetEmployees(request.StartIndex, requestQty);
+        var result = new ItemsProviderResult<Empleado>(employees, employeesQty);
+        return ValueTask.FromResult(result);
+    }
+
+    public List<Empleado> GetEmployees(int initial, int quantity)
+    {
+        var result = new List<Empleado>();
+        for (int i = initial; i < initial + quantity; i++)
+        {
+            result.Add(new Empleado()
+            {
+                Id = i + 1,
+                Name =
+                $"Employee {i + 1}",
+                JobTitle = $"Programmer {i + 1}",
+                DateOfBirth = DateTime.Today.AddYears(-i / 50)
+            });
+        }
+
+        return result;
+    }
+}

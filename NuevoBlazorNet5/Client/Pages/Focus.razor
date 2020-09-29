@@ -1,0 +1,19 @@
+﻿@page "/focus"
+
+<h3>Método FocusAsync</h3>
+
+<button @onclick="() => textInput.FocusAsync()">Hacer focus</button>
+
+<input @ref="textInput" />
+
+@code {
+    ElementReference textInput;
+
+    protected override async Task OnAfterRenderAsync(bool first)
+    {
+        if (first)
+        {
+            await textInput.FocusAsync();
+        }
+    }
+}

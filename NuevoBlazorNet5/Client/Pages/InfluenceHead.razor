@@ -1,0 +1,38 @@
+﻿@page "/cabecera"
+
+<h1>Influenciar Head</h1>
+
+<p>Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="@(() => IncrementCount(1))">Incrementar</button>
+<button class="btn btn-primary" @onclick="@(() => IncrementCount(-1))">Decrementar</button>
+
+<Title Value="@titulo"></Title>
+
+@if (currentCount == 0)
+{
+    <Link rel="icon" href="favicon.ico" />
+}
+else
+{
+    <Link rel="icon" href="favicon-message.ico" />
+}
+
+
+@code {
+    string titulo = "Influenciar Cabecera";
+    private int currentCount = 0;
+
+    private void IncrementCount(int cantidadIncremento)
+    {
+        currentCount += cantidadIncremento;
+        if (currentCount == 0)
+        {
+            titulo = $"Influenciar Cabecera";
+        }
+        else
+        {
+            titulo = $"Influenciar Cabecera ({currentCount})";
+        }
+    }
+}

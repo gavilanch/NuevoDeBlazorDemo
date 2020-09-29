@@ -1,0 +1,41 @@
+﻿@page "/protectedStorage"
+@inject Microsoft.AspNetCore.Components.ProtectedBrowserStorage.ProtectedLocalStorage ProtectedLocalStorage
+
+<h1>Counter</h1>
+
+<p>Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+    private int currentCount = 0;
+
+    protected override async Task OnAfterRenderAsync(bool first)
+    {
+        Console.WriteLine("OnAfterRenderAsync");
+        if (first)
+        {
+            try
+            {
+                var result = await ProtectedLocalStorage.GetAsync<int>("countProtected");
+                Console.WriteLine("result.Success " + result.Success);
+                if (result.Success)
+                {
+                    Console.WriteLine("result.Value " + result.Value);
+                    currentCount = result.Value;
+                    StateHasChanged();
+                }
+            }
+            catch (Exception ex)
+            {
+                // ...
+            }
+        }
+    }
+
+    private async Task IncrementCount()
+    {
+        currentCount++;
+        await ProtectedLocalStorage.SetAsync("countProtected", currentCount);
+    }
+}
