@@ -1,0 +1,39 @@
+﻿@page "/aislamientoJavaScript"
+
+@inject IJSRuntime jsRuntime
+
+<h3>Aislamiento JavaScript</h3>
+
+<button @onclick="CargarArchivo">Cargar archivo</button>
+<button @onclick="MostrarPrompt">Mostrar prompt</button>
+<button @onclick="MostrarAlerta">Mostrar alerta</button>
+<button @onclick="MostrarAlertaSinModulo">Mostrar alerta sin modulo</button>
+
+@if (!string.IsNullOrEmpty(nombre))
+{
+    <p>Hola, @nombre</p>
+}
+
+@code {
+    string nombre = string.Empty;
+    JSObjectReference module;
+    async Task CargarArchivo()
+    {
+        module = await jsRuntime.InvokeAsync<JSObjectReference>("import", "./Utils.js");
+    }
+
+    async Task MostrarPrompt()
+    {
+        nombre = await module.InvokeAsync<string>("mostrarPrompt", "Coloque su nombre");
+    }
+
+    async Task MostrarAlerta()
+    {
+        await module.InvokeVoidAsync("mostrarAlerta", "Este es un mensaje de alerta");
+    }
+
+    async Task MostrarAlertaSinModulo()
+    {
+        await jsRuntime.InvokeVoidAsync("mostrarAlerta", "Este es un mensaje de alerta");
+    }
+}
