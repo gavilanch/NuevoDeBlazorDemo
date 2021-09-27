@@ -1,5 +1,5 @@
 ﻿export function mostrarPrompt(mensaje) {
-    return prompt(mensaje, 'Escribe algo');
+    return prompt(mensaje, 'Tu nombre...');
 }
 
 export function mostrarAlerta(mensaje) {

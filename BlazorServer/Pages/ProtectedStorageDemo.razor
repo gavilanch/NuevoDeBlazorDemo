@@ -12,16 +12,13 @@
 
     protected override async Task OnAfterRenderAsync(bool first)
     {
-        Console.WriteLine("OnAfterRenderAsync");
         if (first)
         {
             try
             {
                 var result = await ProtectedLocalStorage.GetAsync<int>("countProtected");
-                Console.WriteLine("result.Success " + result.Success);
                 if (result.Success)
                 {
-                    Console.WriteLine("result.Value " + result.Value);
                     currentCount = result.Value;
                     StateHasChanged();
                 }
@@ -29,6 +26,7 @@
             catch (Exception ex)
             {
                 // ...
+                Console.WriteLine("Ha habido un error");
             }
         }
     }

@@ -16,7 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CounterAssembly\CounterAssembly.csproj" />
     <ProjectReference Include="..\Utilidades\Utilidades.csproj" />
   </ItemGroup>
 

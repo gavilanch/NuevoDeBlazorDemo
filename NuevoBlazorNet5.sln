@@ -11,10 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NuevoBlazorNet5.Shared", "N
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilidades", "Utilidades\Utilidades.csproj", "{B231018A-F375-439C-A6DF-1173736013C3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp1", "BlazorApp1\BlazorApp1.csproj", "{E40AF967-75CB-43CB-8EE1-6A2275FB7C7F}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CounterAssembly", "CounterAssembly\CounterAssembly.csproj", "{F623E33E-56C5-4AFC-BEE1-B54F510DBBC2}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorServer", "BlazorServer\BlazorServer.csproj", "{BC0B08B9-4940-4291-AC3D-166A0BF9FB6B}"
 EndProject
 Global
@@ -39,14 +35,6 @@ Global
 		{B231018A-F375-439C-A6DF-1173736013C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B231018A-F375-439C-A6DF-1173736013C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B231018A-F375-439C-A6DF-1173736013C3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E40AF967-75CB-43CB-8EE1-6A2275FB7C7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E40AF967-75CB-43CB-8EE1-6A2275FB7C7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E40AF967-75CB-43CB-8EE1-6A2275FB7C7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E40AF967-75CB-43CB-8EE1-6A2275FB7C7F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F623E33E-56C5-4AFC-BEE1-B54F510DBBC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F623E33E-56C5-4AFC-BEE1-B54F510DBBC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F623E33E-56C5-4AFC-BEE1-B54F510DBBC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F623E33E-56C5-4AFC-BEE1-B54F510DBBC2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BC0B08B9-4940-4291-AC3D-166A0BF9FB6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BC0B08B9-4940-4291-AC3D-166A0BF9FB6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC0B08B9-4940-4291-AC3D-166A0BF9FB6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
